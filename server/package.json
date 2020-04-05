@@ -6,7 +6,13 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.5",
+    "bcrypt": "^3.0.7",
+    "jsonwebtoken": "^8.5.1",
+    "validator": "^12.1.0"
   },
   "scripts": {
     "start:prod": "yarn build && nodemon dist/index.js",
