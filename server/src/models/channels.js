@@ -1,6 +1,6 @@
 const channels = [
   {
-    name: 'default',
+    name: 'public',
   },
   {
     name: 'watercooler',

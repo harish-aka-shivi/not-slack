@@ -14,13 +14,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  tokens: [{
-    token: {
-      type: String,
-      required: true,
-    },
-  }],
-  channels: [String],
+  tokens: {
+    type: [{
+      token: {
+        type: String,
+        required: true,
+      },
+    }],
+  },
+  channels: {
+    type: [
+      String,
+    ],
+    default: ['public'],
+  },
 }, {
   timestamps: true,
 });
@@ -33,7 +40,7 @@ userSchema.methods.toJSON = function toJSON() {
   delete userObject._id;
   delete userObject.createdAt;
   delete userObject.__v;
-
+  delete userObject.tokens;
   return userObject;
 };
 
@@ -50,6 +57,40 @@ userSchema.statics.findByCredentials = async function findByCredentials(username
     throw new Error('Credentials not right');
   }
   return user;
+};
+
+userSchema.statics.leaveChannel = async function leaveChannel(username, channel) {
+  const user = await this.findOne({ username });
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  const channels = user.channels.slice();
+  const indexOfChannel = channels.indexOf(channel);
+  if (indexOfChannel !== -1) {
+    channels.splice(indexOfChannel, 1);
+  }
+
+  user.channels = channels;
+  await user.save();
+};
+
+userSchema.statics.joinChannel = async function joinChannel(username, channel) {
+  const user = await this.findOne({ username });
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  const channels = user.channels.slice();
+
+  if (!channels.includes(channel)) {
+    channels.push(channels);
+  }
+
+  user.channels = channels;
+  await user.save();
 };
 
 userSchema.pre('save', async function hashAndSavePassword(next) {
@@ -74,6 +115,14 @@ userSchema.methods.generateAuthToken = async function generateAuthToken() {
   await user.save();
   return token;
 };
+
+userSchema.methods.addChannel = async function addChannel(channel) {
+  const user = this;
+  user.channels = user.channels.concat(channel);
+  await user.save();
+  return user.channels;
+};
+
 
 const User = mongoose.model('User', userSchema);
 export default User;
