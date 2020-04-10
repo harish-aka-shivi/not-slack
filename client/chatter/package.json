@@ -8,8 +8,13 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.0.0",
+    "@react-native-community/async-storage": "^1.9.0",
     "@react-native-community/masked-view": "0.1.6",
+    "@react-navigation/native": "^5.1.4",
     "expo": "~37.0.3",
+    "humps": "^2.0.1",
+    "prop-types": "^15.7.2",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
@@ -20,17 +25,22 @@
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
-    "redux-persist": "^6.0.0"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "babel-preset-expo": "~8.1.0",
     "babel-eslint": "^10.1.0",
+    "babel-preset-expo": "~8.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0"
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-native": "^3.8.1",
+    "reactotron-react-native": "^5.0.0"
   },
   "private": true
 }
