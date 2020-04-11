@@ -15,7 +15,7 @@
     "validator": "^12.1.0"
   },
   "scripts": {
-    "start:prod": "yarn build && nodemon dist/index.js",
+    "start:prod": "yarn build && node dist/index.js",
     "start:dev": "NODE_ENV=development nodemon --exec babel-node ./src/index.js",
     "build": "babel lib -d dist",
     "serve": "node dist/index.js",

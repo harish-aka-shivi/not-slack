@@ -13,7 +13,8 @@
     "start": "cd server && yarn start:prod",
     "start:dev": "cd server && yarn start:dev",
     "test": "cd server && yarn test",
-    "build:client": "cd client && yarn build"
+    "build:client": "cd client && yarn build",
+    "test": "cd server && yarn test"
   },
   "dependencies": {},
   "devDependencies": {
