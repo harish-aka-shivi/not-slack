@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- 12.16.1
+script:
+- yarn test
+cache: yarn
+deploy:
+  app: not-the-slack
+  provider: heroku
+  api_key:
+    secure: OcqxEf51oH8fZNMmXjNuJlyc+etCx3+i+cLHYchAm4J30bXf+KD9DqHXN3JG4jfy/1zO40cnufFg7PcDpf1qjcNoRyAduNvnXR54wFLL34yaeiA1H8ZOb7z4b/JTFdK4Y5/92cvO8T17yU68I0LwKV6sdN7Zl/OWDuwygBzUmhcWSRc4iSvo1/aNxzbytN7hIzZA9BdpTSm0FAPj8IsLOUKKW48zk8jY90oZosEZ3cKyufb9FwRp57QbqsZ9redmPFYUVMiAsd5IuaZWKmZzB48u5VzfMon6yK1miGR9lQRa2B23k+E/nSU1emwyM0qT5IbhqFSUEftg/eFgb6y1/WEh8XyHTg4/hgKTAo/J+1PrYmR1BE6Bpdoh1KQI6e5qs3ethTA+xgXkmuEwDI61VU2Nl0uyYn1yArH+O3M/jRWchuVnOLmPVSA8tFdhFKwRGZbk99XCLG/55BqclhAbTZhGaEEEtQuk/cSGityrXv62So4t3XjfRQI9QCyNyh5CoebgvnCuten3oFWeeVZ6BjRgOurwJU6Zs9ecpudCzZM3VHZiyM3OVxgzHW4Ucn3Zf1EuAvICUca5lLI9zJl4MHgkHBD/DprcGemjnkh+lAbpsJ54v/GB7o6syfLVg8/69cDfcGZRU1n5qkFQZKC4TQPjj012raGKGVfuqQGvoJ0=
