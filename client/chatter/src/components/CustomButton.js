@@ -34,7 +34,7 @@ const CustomButton = ({
     <ButtonComponent
       background={background}
       onPress={onPress}
-      style={[styles.touchable, widthStyle]}
+      style={[styles.touchable, customStyle, widthStyle]}
     >
       <View
         style={[styles.button, customStyle]}

@@ -17,7 +17,6 @@ const getAllMessagesForChannel = async (req, res) => {
   const { channel } = req.params;
   try {
     const messages = await Message.find({ channel });
-    console.log(messages);
     res.send(messages);
   } catch (error) {
     console.log(error);

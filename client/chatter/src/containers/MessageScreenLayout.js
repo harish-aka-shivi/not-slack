@@ -5,7 +5,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DashboardDrawer from './ChannelsDrawer';
-import CustomScrollView from './CustomScrollView';
+// import CustomScrollView from './CustomScrollView';
 import { toggleMenuOpen } from '../redux/app';
 import {
   onWebStyle, onDesktop, BLACK, LIGHT_GRAY,
@@ -33,13 +33,16 @@ const MessageScreenLayout = ({ ...props }) => {
       <View style={styles.body}>
         <DashboardDrawer />
         <View
-          {...onDesktop({
-            paddingLeft: 300,
-            opacity: 1,
-          })}
           style={styles.content}
         >
-          <CustomScrollView {...props} />
+          <View
+            style={styles.contentContainer}
+            {...onDesktop({
+              paddingLeft: 300,
+              opacity: 1,
+            })}
+            {...props}
+          />
         </View>
       </View>
 
@@ -57,6 +60,9 @@ const styles = StyleSheet.create({
     }),
   },
   content: {
+    flex: 1,
+  },
+  contentContainer: {
     flex: 1,
   },
   topBar: {

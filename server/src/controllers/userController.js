@@ -3,6 +3,10 @@ import User from '../models/userModel';
 const userLogin = async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.username, req.body.password);
+    if (!user) {
+      res.status(404).send({ error: 'user not found' });
+      return;
+    }
     const token = await user.generateAuthToken();
     res.send({ user, token });
   } catch (error) {

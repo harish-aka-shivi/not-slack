@@ -9,6 +9,10 @@ const initSocket = server => {
   io.on('connection', socket => {
     console.log('web socket connection');
 
+    socket.on('sendMessageTemp', options => {
+      io.emit('message', options);
+    });
+
     socket.on('join', (options, callback) => {
       const { channel, username } = options;
 
@@ -20,10 +24,12 @@ const initSocket = server => {
       }
 
       socket.join(channel);
-      callback();
+      if (callback) {
+        callback();
+      }
     });
 
-    socket.on('sendMessage', (options, callback) => {
+    socket.on('sendMessage', options => {
       const { username, channel, content } = options;
 
       // save to db
@@ -31,7 +37,7 @@ const initSocket = server => {
 
       // broadcast to channel
       io.in(channel).emit('message', options);
-      callback();
+      // callback();
     });
 
     socket.on('leaveChannel', (options, callback) => {
@@ -44,7 +50,9 @@ const initSocket = server => {
       }
 
       socket.leave(channel);
-      callback();
+      if (callback) {
+        callback();
+      }
     });
   });
 };

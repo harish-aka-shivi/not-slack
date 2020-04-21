@@ -48,7 +48,7 @@ userSchema.statics.findByCredentials = async function findByCredentials(username
   const user = await this.findOne({ username });
 
   if (!user) {
-    throw new Error('User not found');
+    return '';
   }
 
   const isPasswordMatch = await this.comparePassword(password, user.password);

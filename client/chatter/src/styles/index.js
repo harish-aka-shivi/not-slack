@@ -13,6 +13,7 @@ export const TRANSPARENT = 'transparent';
 export const SLACK_LIGHT_PRIMARY = '#7C2852';
 export const SLACK_LOGIN = '#185F34';
 export const SLACK_ORANGE_ACCENT = '#F2606A';
+export const SLACK_SELECTED_CHANNEL = '#1164A2';
 
 export const DRAWER_WIDTH = 300;
 
