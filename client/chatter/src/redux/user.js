@@ -25,9 +25,9 @@ const LOGIN_ERROR = 'APP/USER/LOGIN_ERROR';
 // const REGISTRATION_SUCCESS = 'APP/USER/REGISTRATION_SUCCESS';
 // const REGISTRATION_ERROR = 'APP/USER/REGISTRATION_ERROR';
 
-const reducer = (state, action) => {
+const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case [LOGIN_START]: {
+    case LOGIN_START: {
       return {
         ...state,
         loaders: {
@@ -36,8 +36,7 @@ const reducer = (state, action) => {
         },
       };
     }
-    case [LOGIN_SUCCESS]: {
-      console.log('login success');
+    case LOGIN_SUCCESS: {
       return {
         ...state,
         loaders: {
@@ -53,7 +52,7 @@ const reducer = (state, action) => {
         userData: action.payload.user,
       };
     }
-    case [LOGIN_ERROR]: {
+    case LOGIN_ERROR: {
       return {
         ...state,
         loaders: {
@@ -67,7 +66,7 @@ const reducer = (state, action) => {
       };
     }
     default:
-      return INITIAL_STATE;
+      return state;
   }
 };
 
@@ -89,5 +88,6 @@ export const loginAction = ({ username, password }) => dispatch => dispatch(prom
 
 // selectors
 export const isUserLoggedIn = state => !!state.user.token;
+export const getUserName = state => state.user.userData.username;
 
 export default reducer;

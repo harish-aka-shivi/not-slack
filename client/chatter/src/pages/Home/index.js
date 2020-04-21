@@ -1,6 +1,8 @@
-import React from 'react';
-import MessageScreenLayout from '../../containers/MessageScreenLayout';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import MessageScreen from '../../containers/MessageScreen';
+import { fetchMessagesForChannel } from '../../redux/messages';
 
 // authenticate
 
@@ -11,10 +13,17 @@ import MessageScreen from '../../containers/MessageScreen';
 
 // fetch messages for each channel
 
-const Home = () => (
-  <MessageScreenLayout>
+const Home = () => {
+  const dispatch = useDispatch();
+  const { channel } = useParams();
+
+  useEffect(() => {
+    dispatch(fetchMessagesForChannel(channel));
+  }, []);
+
+  return (
     <MessageScreen />
-  </MessageScreenLayout>
-);
+  );
+};
 
 export default Home;

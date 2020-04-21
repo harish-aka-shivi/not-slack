@@ -1,13 +1,13 @@
-const promiseAction = ({ types, promiseCreator }) => (dispatch, getState) => {
+const promiseAction = ({ types, promiseCreator, ...args }) => (dispatch, getState) => {
   const [REQUEST, SUCCESS, ERROR] = types;
   dispatch({ type: REQUEST });
 
   return promiseCreator(dispatch, getState)
     .then(payload => {
-      console.log(payload);
       dispatch({
         type: SUCCESS,
         payload,
+        ...args,
       });
 
       return {
@@ -19,11 +19,13 @@ const promiseAction = ({ types, promiseCreator }) => (dispatch, getState) => {
       dispatch({
         type: ERROR,
         error,
+        ...args,
       });
 
       return {
         error,
         success: false,
+        ...args,
       };
     });
 };

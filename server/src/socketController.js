@@ -24,10 +24,12 @@ const initSocket = server => {
       }
 
       socket.join(channel);
-      callback();
+      if (callback) {
+        callback();
+      }
     });
 
-    socket.on('sendMessage', (options, callback) => {
+    socket.on('sendMessage', options => {
       const { username, channel, content } = options;
 
       // save to db
@@ -48,7 +50,9 @@ const initSocket = server => {
       }
 
       socket.leave(channel);
-      callback();
+      if (callback) {
+        callback();
+      }
     });
   });
 };
