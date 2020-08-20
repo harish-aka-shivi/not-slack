@@ -10,7 +10,7 @@
     "dotenv": "^8.2.0",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.5",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "jsonwebtoken": "^8.5.1",
     "validator": "^12.1.0"
   },
